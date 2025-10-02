@@ -1,4 +1,15 @@
- export default function Home(){
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also import the specific CSS file
+import { useEffect } from 'react';
+import { motion, scale, styleEffect } from 'motion/react';
+import { style } from 'motion/react-client';
+
+export default function Home(){
+    useEffect(() => {
+        AOS.init({
+          // Optional: Add any initialization parameters here
+        });
+      }, []); 
     return(
         <>
         <div className="absolute inset-0 h-screen md:h-screen" style={{
@@ -33,6 +44,7 @@
                         {/* Person Standing Image */}
                         <div className="relative z-10 w-40 h-56 sm:w-56 sm:h-72 md:w-64 md:h-80 overflow-hidden">
                             <img 
+                                data-aos="fade-in"
                                 src="/images/personStanding.png" 
                                 alt="Person raising hand with megaphone"
                                 className="w-full h-full object-cover object-top"
@@ -42,6 +54,7 @@
 
                         {/* Background shapes */}
                         <img 
+                            data-aos="fade-in"
                             src="/images/Ellipse 1.png" 
                             alt="Orange ellipse"
                             className="absolute -z-10 object-contain opacity-90 top-45 right-3 "
@@ -49,16 +62,19 @@
                         <img 
                             src="/images/PurpleBlob.png" 
                             alt="Purple blob"
+                            data-aos="fade-up"
                             className="absolute -z-10 object-contain top-25 left-11"
                         />
                         <img 
                             src="/images/RedBlob.png" 
                             alt="Red blob"
+                            data-aos="fade-up"
                             className="absolute -z-10 object-contain top-51 -left-9"
                         />
                         <img 
                             src="/images/BrownBlob.png" 
                             alt="Brown blob"
+                            data-aos="fade-up"
                             className="absolute -z-10 object-contain top-48 left-33"
                         />
                         
@@ -66,7 +82,7 @@
                 </div>
 
                 {/* Main Title */}
-                <div className="text-center -mt-2 md:-mt-4 px-2">
+                <div className="text-center -mt-2 md:-mt-4 px-2" data-aos="fade-in">
                     <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-tight md:leading-[1.15] lg:leading-[1.1] tracking-tight">
                         <div className="text-2xl md:text-3xl mt-2" style={{fontFamily:"Pujarelah"}}>Become a</div>
                         <div className="text-5xl sm:text-6xl md:text-6xl lg:text-[6rem]" style={{fontFamily:"Montserrat"}}>CAMPUS</div>
@@ -76,14 +92,16 @@
                 </div>
 
                 {/* Description */}
-                <p className="text-white text-base sm:text-lg md:text-xl text-center mb-8 md:mb-6 max-w-sm sm:max-w-xl md:max-w-3xl" style={{fontFamily:"Pujarelah"}}>
+                <p data-aos="fade-in" className="text-white text-base sm:text-lg md:text-xl text-center mb-8 md:mb-6 max-w-sm sm:max-w-xl md:max-w-3xl" style={{fontFamily:"Pujarelah"}}>
                     Represent your campus and unlock exclusive benefits like certificates, pronite tickets and more.
                 </p>
 
                 {/* Apply Now Button */}
-                <button className="mx-6 md:mx-10" style={{cursor:"pointer"}}>
+                <motion.button className="mx-6 md:mx-10" style={{cursor:"pointer"}}
+                    whileHover={{scale:1.2}}
+                    whileTap={{scale:0.9}}>
                     <img src="/images/NavApplyNow.png" alt="" />
-                </button>
+                </motion.button>
             </main>
 
             {/* Subtle background effects */}
