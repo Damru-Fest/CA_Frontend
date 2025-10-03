@@ -24,7 +24,7 @@ export default function About(){
 
                 {/* Description Panel */}
                 <div className="relative mx-auto max-w-5xl">
-                    <div className=" text-white px-6 md:px-10 py-8 md:py-10 leading-relaxed" style={{fontFamily:"Pujarelah"}}>
+                    <div className=" text-white px-6 md:px-10 py-8 md:py-10 leading-relaxed ambassador-about-text">
                         <p className="text-lg md:text-2xl text-center">
                             The Damru Fest is an annual two-day cultural carnival hosted by Rishihood <br /> University in Delhi NCR. The 2024 edition ran on 29th & 30th November featured live music, dance battles, <br />
                             art installations, workshops and more — designed to draw both campus and off-campus crowds.

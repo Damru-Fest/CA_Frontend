@@ -12,23 +12,14 @@ export default function Home(){
       }, []); 
     return(
         <>
-        <div className="absolute inset-0 h-screen md:h-screen" style={{
-            width:"100vw",
-            backgroundImage:"url('/images/bg.png')",
-            backgroundColor:"black",
-            backgroundSize:"cover",
-            backgroundPosition:"center"
-         }}>
+        <div className="absolute inset-0 h-screen md:h-screen ambassador-home-bg">
      
         </div>
         <div className="absolute inset-0 pointer-events-none z-10 top-0 md:top-0">
                 <img 
                     src="/images/Decor.png" 
                     alt="Decorative background"
-                    className="absolute inset-0"
-                    style={{
-                        width:'100%'
-                    }}
+                    className="absolute inset-0 decor-image"
                 />
             </div>
 
@@ -42,7 +33,7 @@ export default function Home(){
                     {/* Person with megaphone illustration */}
                     <div className="relative flex justify-center items-center">
                         {/* Person Standing Image */}
-                        <div className="relative z-10 w-40 h-56 sm:w-56 sm:h-72 md:w-64 md:h-80 overflow-hidden">
+                        <div className="relative z-10 md:top-0   w-40 h-56 sm:w-56 sm:h-72 md:w-64 md:h-80 overflow-hidden">
                             <img 
                                 data-aos="fade-in"
                                 src="/images/personStanding.png" 
@@ -57,25 +48,25 @@ export default function Home(){
                             data-aos="fade-in"
                             src="/images/Ellipse 1.png" 
                             alt="Orange ellipse"
-                            className="absolute -z-10 object-contain opacity-90 top-45 right-3 "
+                            className="absolute -z-10 object-contain opacity-90 md:top-45 top-34 right-3 md:w-auto "
                         />
                         <img 
                             src="/images/PurpleBlob.png" 
                             alt="Purple blob"
                             data-aos="fade-up"
-                            className="absolute -z-10 object-contain top-25 left-11"
+                            className="absolute -z-10 object-contain md:top-25 md:w-auto w-20 top-10   left-11"
                         />
                         <img 
                             src="/images/RedBlob.png" 
                             alt="Red blob"
-                            data-aos="fade-up"
-                            className="absolute -z-10 object-contain top-51 -left-9"
+                            data-aos = "fade-up"
+                            className="absolute -z-10 object-contain md:top-51 md:-left-9 -left-13 top-29 md:w-auto w-25"
                         />
                         <img 
                             src="/images/BrownBlob.png" 
                             alt="Brown blob"
-                            data-aos="fade-up"
-                            className="absolute -z-10 object-contain top-48 left-33"
+                            data-aos = "fade-up"
+                            className="absolute -z-10 object-contain md:top-48 md:left-33 -right-1 md:w-auto w-20 top-30 "
                         />
                         
                     </div>
@@ -84,20 +75,20 @@ export default function Home(){
                 {/* Main Title */}
                 <div className="text-center -mt-2 md:-mt-4 px-2" data-aos="fade-in">
                     <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-tight md:leading-[1.15] lg:leading-[1.1] tracking-tight">
-                        <div className="text-2xl md:text-3xl mt-2" style={{fontFamily:"Pujarelah"}}>Become a</div>
-                        <div className="text-5xl sm:text-6xl md:text-6xl lg:text-[6rem]" style={{fontFamily:"Montserrat"}}>CAMPUS</div>
-                        <div className="text-5xl sm:text-6xl md:text-6xl lg:text-[6rem]" style={{fontFamily:"Montserrat"}}>AMBASSADOR</div>
-                        <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-2" style={{fontFamily:"Pujarelah"}}>For Damru'25</div>
+                        <div className="text-xl md:text-3xl mt-2 ambassador-title-pujarelah">Become a</div>
+                        <div className="text-4xl sm:text-6xl md:text-6xl lg:text-[6rem] ambassador-title-montserrat">CAMPUS</div>
+                        <div className="text-4xl sm:text-6xl md:text-6xl lg:text-[6rem] ambassador-title-montserrat">AMBASSADOR</div>
+                        <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-2 ambassador-title-pujarelah">For Damru'25</div>
                     </h1>
                 </div>
 
                 {/* Description */}
-                <p data-aos="fade-in" className="text-white text-base sm:text-lg md:text-xl text-center mb-8 md:mb-6 max-w-sm sm:max-w-xl md:max-w-3xl" style={{fontFamily:"Pujarelah"}}>
+                <p data-aos="fade-in" className="text-white text-base sm:text-lg md:text-xl text-center mb-8 md:mb-6 max-w-sm sm:max-w-xl md:max-w-3xl ambassador-main-content">
                     Represent your campus and unlock exclusive benefits like certificates, pronite tickets and more.
                 </p>
 
                 {/* Apply Now Button */}
-                <motion.button className="mx-6 md:mx-10" style={{cursor:"pointer"}}
+                <motion.button className="mx-6 md:mx-10 ambassador-apply-button"
                     whileHover={{scale:1.2}}
                     whileTap={{scale:0.9}}>
                     <img src="/images/NavApplyNow.png" alt="" />

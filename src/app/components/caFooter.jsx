@@ -4,7 +4,7 @@ export default function CaFooter(){
             <div className="flex flex-row justify-between items-end p-5 px-10 w-full">
 
                 {/* Logo left */}
-                <img src="/images/Logo.png" alt="Logo"/>
+                <img className="md:w-auto w-15" src="/images/Logo.png" alt="Logo"/>
 
                 {/* Text & Links right */}
                 <div className="flex flex-col items-end">
