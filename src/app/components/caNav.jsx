@@ -47,6 +47,15 @@ const CaNav = () => {
                 >
                     Benefits
                 </motion.a>
+
+                <motion.a
+                    whileHover={{ scale: 1.1 }}
+                    href="#benefits"
+                    className="hover:text-orange-400 transition-colors"
+                    whileTap={{scale:0.9}}
+                >
+                    Why Join?
+                </motion.a>
             </nav>
 
             {/* Desktop Apply Now Button */}
