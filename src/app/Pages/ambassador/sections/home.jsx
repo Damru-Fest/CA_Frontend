@@ -3,7 +3,7 @@ import 'aos/dist/aos.css'; // You can also import the specific CSS file
 import { useEffect } from 'react';
 import { motion, scale, styleEffect } from 'motion/react';
 import { style } from 'motion/react-client';
-
+import Link from 'next/link';
 export default function Home(){
     useEffect(() => {
         AOS.init({
@@ -88,11 +88,12 @@ export default function Home(){
                 </p>
 
                 {/* Apply Now Button */}
-                <motion.button className="mx-6 md:mx-10 ambassador-apply-button"
+               <Link href="/Pages/Form"><motion.button className="mx-6 md:mx-10 ambassador-apply-button"
                     whileHover={{scale:1.2}}
                     whileTap={{scale:0.9}}>
                     <img src="/images/NavApplyNow.png" alt="" />
                 </motion.button>
+                </Link>
             </main>
 
             {/* Subtle background effects */}

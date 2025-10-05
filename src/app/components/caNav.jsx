@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "motion/react"
 import { useState } from "react"
+import Link from "next/link"
 
 const CaNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -59,7 +60,7 @@ const CaNav = () => {
             </nav>
 
             {/* Desktop Apply Now Button */}
-            <motion.button
+            <Link href="/Pages/Form"><motion.button
                 className="hidden lg:block mx-10 font-semibold"
                 style={{ cursor: "pointer" }}
                 whileHover={{ scale: 1.05 }}
@@ -67,6 +68,7 @@ const CaNav = () => {
             >
                 <img src="/images/NavApplyNow.png" alt="" className="h-12 w-auto" />
             </motion.button>
+            </Link>
 
             {/* Burger Menu Button */}
             <motion.button
@@ -155,7 +157,7 @@ const CaNav = () => {
 
                             {/* Mobile Apply Now Button */}
                             <div className="absolute bottom-8 left-6 right-6">
-                                <motion.button
+                               <Link href="/Pages/Form"><motion.button
                                     className="w-full font-semibold"
                                     style={{ cursor: "pointer" }}
                                     whileHover={{ scale: 1.02 }}
@@ -164,6 +166,7 @@ const CaNav = () => {
                                 >
                                     <img src="/images/NavApplyNow.png" alt="" className="w-full h-16 object-contain" />
                                 </motion.button>
+                                </Link>
                             </div>
                         </motion.div>
                     </motion.div>

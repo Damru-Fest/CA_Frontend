@@ -1,3 +1,4 @@
+import Link from "next/link"
 export default function Registerbanner(){
     return(
         <>
@@ -6,10 +7,11 @@ export default function Registerbanner(){
                 <div className='flex-col flex'>
                     <h1 className='font-bold text-white md:text-3xl'>What are you waiting for?</h1>
                     <p className='text-white md:mt-5'>Apply for damru, represent your university <br />enjoy the fest!</p>
-                    <button className="md:mt-5 mt-2 register-banner-button">
+
+                    <Link href="/Pages/Form"><button className="md:mt-5 mt-2 register-banner-button">
                         <img className="md:w-auto w-25" src="/images/NavApplyNow.png" alt="" />
                     </button>
-
+                    </Link>
                 </div>
             
 
