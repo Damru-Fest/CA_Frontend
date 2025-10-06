@@ -9,12 +9,12 @@ export default function FormInfo({ onSubmit }) {
 
   const [data, setData] = useState({
     college: "",
-    year: "",
+    yearOfStudy: "",
     stream: "",
     linkedinUrl: "",
     instagramUrl: "",
-    experience: "",
-    why: "",
+    previousExperience: "",
+    whyAmbassador: "",
   });
 
   const safeTrim = (v) => (typeof v === "string" ? v.trim() : "");
@@ -22,11 +22,12 @@ export default function FormInfo({ onSubmit }) {
   const canNext = useMemo(() => {
     if (step === 0)
       return (
-        safeTrim(data.college).length > 0 && safeTrim(data.year).length > 0
+        safeTrim(data.college).length > 0 &&
+        safeTrim(data.yearOfStudy).length > 0
       );
     if (step === 1) return true;
     if (step === 2) return true;
-    if (step === 3) return safeTrim(data.why).length > 10;
+    if (step === 3) return safeTrim(data.whyAmbassador).length > 10;
     return false;
   }, [step, data]);
 
@@ -90,8 +91,8 @@ export default function FormInfo({ onSubmit }) {
 
             <label className="mb-2">Year</label>
             <input
-              name="year"
-              value={data.year}
+              name="yearOfStudy"
+              value={data.yearOfStudy}
               onChange={handleChange}
               className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E]"
             />
@@ -119,7 +120,7 @@ export default function FormInfo({ onSubmit }) {
             <label className="mb-2">LinkedIn</label>
             <input
               name="linkedin"
-              value={data.linkedin}
+              value={data.linkedinUrl}
               onChange={handleChange}
               className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E]"
             />
@@ -127,7 +128,7 @@ export default function FormInfo({ onSubmit }) {
             <label className="mb-2">Instagram</label>
             <input
               name="instagram"
-              value={data.instagram}
+              value={data.instagramUrl}
               onChange={handleChange}
               className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E]"
             />
@@ -148,8 +149,8 @@ export default function FormInfo({ onSubmit }) {
               Previous ambassador / leadership experience
             </label>
             <textarea
-              name="experience"
-              value={data.experience}
+              name="previousExperience"
+              value={data.previousExperience}
               onChange={handleChange}
               className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E]"
               rows={5}
@@ -168,11 +169,11 @@ export default function FormInfo({ onSubmit }) {
             className="flex flex-col"
           >
             <label className="mb-2">
-              Why do you want to be a Campus Ambassador?
+              why do you want to be a Campus Ambassador?
             </label>
             <textarea
-              name="why"
-              value={data.why}
+              name="whyAmbassador"
+              value={data.whyAmbassador}
               onChange={handleChange}
               className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E]"
               rows={6}
