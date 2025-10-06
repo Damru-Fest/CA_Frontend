@@ -7,20 +7,21 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getMe = async () => {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/me`,
-
         { withCredentials: true }
       );
       if (response.data.data.user) {
         setUser(response.data.data.user);
       }
       return true;
-    } catch (err) {}
+    } catch (err) {
+      return false;
+    }
   };
 
   const caSubmit = async (data) => {
@@ -38,12 +39,11 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        setLoading(true);
         await getMe();
-        setLoading(false);
       } catch (error) {
         console.error("Failed to initialize auth:", error);
       } finally {
+        setLoading(false);
       }
     };
 
