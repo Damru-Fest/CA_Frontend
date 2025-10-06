@@ -1,37 +1,24 @@
-'use client';
+import React from "react";
+import Navbar from "../../../components/caNav";
+import Home from "../ambassador/section/home";
+import FestivalCard from "../ambassador/section/festivalCard";
+import RolesAndResponsibilities from "../ambassador/section/rolesResponsibilities";
+import Benefits from "../ambassador/section/benefits";
+import RegisterBanner from "./section/registerBanner";
+import CaFooter from "../../../components/caFooter";
 
-import { Hedvig_Letters_Sans } from 'next/font/google';
-import { useState } from 'react';
-import CaFooter from '../../components/caFooter.jsx'
-import CaNav from '../../components/caNav.jsx'
-import Home from './sections/home.jsx'
-import Benefits from './sections/benefits.jsx'
-import About from './sections/about.jsx'
-import Rules from './sections/rules.jsx'
-import Register from './sections/registerbanner.jsx'
+const page = () => {
+  return (
+    <div className="bg-black overflow-x-hidden text-white min-h-screen">
+      <Navbar />
+      <Home />
+      <FestivalCard />
+      <RolesAndResponsibilities />
+      <Benefits />
+      <RegisterBanner />
+      <CaFooter />
+    </div>
+  );
+};
 
-export default function AmbassadorPage() {
-    return (
-        <div className="min-h-screen relative overflow-hidden">
-           <CaNav/>
-           
-           <Home/>
-           <About/>
-           <Rules/>
-           <Benefits/>
-           <Register/>
-           <CaFooter/>
-
-           
-
-
-           
-            
-
-
-            
-           
-        </div>
-        
-    );
-}
+export default page;
