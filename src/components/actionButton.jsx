@@ -1,10 +1,12 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 const ActionButton = () => {
   return (
     <div>
-          <Link href="/apply" className="
+      <Link
+        href="/Pages/caForm"
+        className="
               inline-flex items-center justify-center
               h-10 w-[137px]
               gap-2.5 rounded-[30px]
@@ -14,13 +16,12 @@ const ActionButton = () => {
               transition-all duration-150
               hover:shadow-[0px_4px_0px_0px_#FF931E]
               active:translate-y-1 active:shadow-[0px_2px_0px_0px_#FF931E]
-            ">
-            
-              Apply Now!
-            
-          </Link>
+            "
+      >
+        Apply Now!
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default ActionButton
+export default ActionButton;
