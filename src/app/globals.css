@@ -1,73 +1,26 @@
 @import "tailwindcss";
 
-body{
-    background-color: black;
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
-.spinner{
-    animation: spin 60s linear infinite;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
-@keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
-
-/* Ambassador Section Styles */
-
-/* Home Section */
-.ambassador-home-bg {
-    width: 100vw;
-    background-image: url('/images/bg.png');
-    background-color: black;
-    background-size: cover;
-    background-position: center;
 }
 
-.decor-image {
-    width: 100%;
-}
-
-.ambassador-main-content {
-    font-family: 'Pujarelah', sans-serif;
-}
-
-.ambassador-title-pujarelah {
-    font-family: 'Pujarelah', sans-serif;
-}
-
-.ambassador-title-montserrat {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.ambassador-apply-button {
-    cursor: pointer;
-}
-
-/* About Section */
-.ambassador-about-text {
-    font-family: 'Pujarelah', sans-serif;
-}
-
-/* Register Banner Section */
-.register-banner-bg {
-    width: 100%;
-    height: 20vh;
-    background-image: url('/images/Rectangle.png');
-}
-
-.register-banner-button {
-    cursor: pointer;
-}
-
-/* Benefits Section */
-.benefits-title {
-    font-weight: bold;
-    color: white;
-    font-size: 2.25rem;
-    margin-top: 1.25rem;
-    text-align: center;
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
