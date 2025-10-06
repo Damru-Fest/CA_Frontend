@@ -211,9 +211,9 @@ const RolesResponsibilities = () => {
         opacity: 0,
         y: 20,
         stagger: 0.2,
-        duration: 0.8,
+        duration: 0.2,
         ease: "power3.out",
-      }, "-=0.8"); // Timing the text animation
+      }, "-=0.2"); // Timing the text animation
 
     gsap.to(circularRef.current, {
       rotation: 360,
@@ -269,26 +269,26 @@ const RolesResponsibilities = () => {
         </h1>
 
         {/* List of responsibilities */}
-        <div ref={textContainerRef} className="max-w-3xl mx-auto bg-black/30 backdrop-blur-sm p-6 rounded-lg border border-white/10">
+        <div ref={textContainerRef} className="max-w-3xl mx-auto  p-6 ">
           <ul className="space-y-4 text-left text-gray-200 text-base sm:text-lg">
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
               <span>Promote Damru-25 across the campus via social media, posters, and word of mouth.</span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
               <span>Drive registrations for competitions, workshops, and flagship events.</span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
               <span>Serve as the first point of contact for student queries regarding events or registrations.</span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
               <span>Organize mini pre-fest activities like info sessions or campus contests.</span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
               <span>Create and share digital content (reels, memes, posters) to boost engagement.</span>
             </li>
           </ul>

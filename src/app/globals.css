@@ -1,16 +1,40 @@
 @import "tailwindcss";
 
+/* --- Font Face Declarations --- */
+/* This section imports your custom fonts so the browser knows how to load them. */
+
+@font-face {
+  font-family: 'Kamal';
+  src: url(/font/Kamal.ttf) format("truetype");
+  
+}
+
+@font-face {
+  font-family: 'Pujarelah';
+  src: url(/font/Pujarelah-Black.otf) format("opentype");
+  font-weight: 400;
+  font-style: normal;
+ 
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/font/Montserrat-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+ 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --font-primary: 'Kamal', 'Montserrat', sans-serif; 
+  --font-secondary: 'Pujarelah', 'Montserrat', sans-serif;  
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+ 
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,8 +43,20 @@
   }
 }
 
+/* --- Global Styles --- */
+/* These styles apply to the whole page, removing default browser styles. */
+
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground); 
+  font-family: var(--font-secondary);
 }
+
+h2{
+  font-family:"kamal";
+}
+
+
+/* --- Heading Styles --- */
+/* This ensures all heading tags (h1, h2, etc.) use the primary 'Kamal' font. */
+ 

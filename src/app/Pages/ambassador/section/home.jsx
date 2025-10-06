@@ -211,7 +211,7 @@ const CampusAmbassador = () => {
           </motion.p>
 
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none"
+            className="text-5xl font-['Montserrat'] font-semibold sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none"
             custom={2}
             initial="hidden"
             animate="visible"

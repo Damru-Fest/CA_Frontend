@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { User, Mail, Lock } from 'lucide-react';
+import CaNavbar from "../../../components/caNav"
 
 // A simple SVG component for the Google Icon
 const GoogleIconSVG = ({ className }) => (
@@ -75,6 +76,7 @@ const CaRegister = () => {
             className="relative flex flex-col items-center justify-center min-h-screen w-full bg-cover bg-center bg-no-repeat text-white p-4 md:p-8 overflow-hidden"
             style={{ backgroundImage: `url(${bgImageUrl})` }}
         >
+            <CaNavbar/>
             <img src={decorativeOverlayUrl} alt="Decorative element" className="absolute -top-40 -rotate-2 left-0 w-full h-auto opacity-60" />
             <div className="absolute inset-0 bg-black opacity-80 z-20"></div>
 
