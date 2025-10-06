@@ -23,6 +23,18 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {}
   };
 
+  const caSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/caForm`,
+        data,
+        { withCredentials: true }
+      );
+      console.log(response);
+      return true;
+    } catch (err) {}
+  };
+
   useEffect(() => {
     const initializeAuth = async () => {
       try {
@@ -39,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, setLoading }}>
+    <AuthContext.Provider value={{ user, loading, setLoading, caSubmit }}>
       {children}
     </AuthContext.Provider>
   );

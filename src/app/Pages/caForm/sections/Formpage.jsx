@@ -6,8 +6,7 @@ import { useAuth } from "@/app/context/AuthContext";
 import FormInfo from "./FormInfo";
 export default function FormPage() {
   const [showForm, setShowForm] = useState(false);
-  const { user, loading, setLoading } = useAuth();
-  console.log(loading);
+  const { user, loading, setLoading, caSubmit } = useAuth();
   useEffect(() => {
     if (user) {
       setShowForm(true);
@@ -18,6 +17,18 @@ export default function FormPage() {
   const handleGoogleSignIn = () => {
     setLoading(true);
     redirect(`${process.env.NEXT_PUBLIC_API_URL}/auth/google`);
+  };
+
+  const [collectedData, setCollectedData] = useState(null);
+  const [submittingForm, setSubmittingForm] = useState(false);
+
+  const handleFormSubmit = async (formData) => {
+    setSubmittingForm(true);
+
+    await caSubmit(formData);
+    setCollectedData(formData);
+    console.log("Final collected data:", formData);
+    setSubmittingForm(false);
   };
 
   return (
@@ -73,7 +84,7 @@ export default function FormPage() {
       <hr className="mb-5" />
 
       {/* Conditionally render the real form only after OAuth success */}
-      {showForm ? <FormInfo /> : null}
+      {showForm ? <FormInfo onSubmit={handleFormSubmit} /> : null}
     </div>
   );
 }
