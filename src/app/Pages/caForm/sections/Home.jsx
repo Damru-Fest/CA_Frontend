@@ -1,8 +1,6 @@
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also import the specific CSS file
 import { useEffect } from "react";
-import { motion, scale, styleEffect } from "motion/react";
-import { style } from "motion/react-client";
 
 export default function Home() {
   useEffect(() => {

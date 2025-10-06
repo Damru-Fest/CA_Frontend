@@ -37,7 +37,7 @@ export default function Form() {
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col">
-      <div className="absolute top-5 left-10">
+      <div className="absolute top-5 left-10 z-100">
         <Link href="/">
           <Image
             src="/ambassdorAssets/logo.png"

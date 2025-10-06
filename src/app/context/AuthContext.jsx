@@ -8,7 +8,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [app, setApp] = useState(false);
   const getMe = async () => {
     try {
       const response = await axios.get(
@@ -31,15 +31,34 @@ export const AuthProvider = ({ children }) => {
         data,
         { withCredentials: true }
       );
-      console.log(response);
+      // Update app state to reflect successful submission
+      setApp(true);
       return true;
-    } catch (err) {}
+    } catch (err) {
+      console.error("Error submitting CA form:", err);
+      return false;
+    }
+  };
+
+  const caGet = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/caForm`,
+        { withCredentials: true }
+      );
+      if (response?.data?.message === "Application found") {
+        setApp(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     const initializeAuth = async () => {
       try {
         await getMe();
+        await caGet();
       } catch (error) {
         console.error("Failed to initialize auth:", error);
       } finally {
@@ -51,7 +70,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, setLoading, caSubmit }}>
+    <AuthContext.Provider value={{ user, loading, setLoading, caSubmit, app }}>
       {children}
     </AuthContext.Provider>
   );

@@ -2,11 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { useAuth } from "@/app/context/AuthContext";
 export default function FormInfo({ onSubmit }) {
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
-
   const [data, setData] = useState({
     college: "",
     yearOfStudy: "",
@@ -27,14 +26,14 @@ export default function FormInfo({ onSubmit }) {
       );
     if (step === 1) return true;
     if (step === 2) return true;
-    if (step === 3) return safeTrim(data.whyAmbassador).length > 10;
+    if (step === 3) return safeTrim(data.whyAmbassador).length > 0;
     return false;
   }, [step, data]);
 
   const variants = {
-    enter: (dir) => ({ x: dir > 0 ? 300 : -300, opacity: 0 }),
+    enter: (dir) => ({ x: dir > 0 ? 10 : -10, opacity: 0 }),
     center: { x: 0, opacity: 1 },
-    exit: (dir) => ({ x: dir < 0 ? 300 : -300, opacity: 0 }),
+    exit: (dir) => ({ x: dir < 0 ? 10 : -10, opacity: 0 }),
   };
 
   const next = () => {
@@ -59,7 +58,13 @@ export default function FormInfo({ onSubmit }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
+
+    // Only allow submission if we're on step 3 and form is valid
+    if (step !== 3 || !canNext || submitting) {
+      return;
+    }
+
     setSubmitting(true);
     // simulate network
     await new Promise((r) => setTimeout(r, 800));
@@ -184,11 +189,21 @@ export default function FormInfo({ onSubmit }) {
 
       <div className="flex items-center justify-between mt-4">
         <div>
-          {step > 0 && (
+          {step < 4 && (
             <button
               type="button"
               onClick={back}
-              className="mr-2 px-4 py-2 border rounded"
+              className={`inline-flex items-center justify-center
+              h-10 w-[137px]
+              gap-2.5 rounded-[30px]
+              bg-black px-5 py-2.5
+              font-semibold text-white
+              border-2 border-[#FF931E]
+              transition-all duration-150
+              shadow-[0px_3px_0px_0px_#FF931E]
+              active:translate-y-1 active:shadow-[0px_2px_0px_0px_#FF931E] ${
+                step === 0 ? "opacity-50 cursor-not-allowed" : null
+              }`}
             >
               Back
             </button>
@@ -200,7 +215,15 @@ export default function FormInfo({ onSubmit }) {
               type="button"
               onClick={next}
               aria-disabled={!canNext}
-              className={`px-4 py-2 bg-white text-black rounded ${
+              className={`inline-flex items-center justify-center
+              h-10 w-[137px]
+              gap-2.5 rounded-[30px]
+              bg-white px-5 py-2.5
+              font-semibold text-black
+              shadow-[0px_5px_0px_0px_#FF931E]
+              transition-all duration-150
+              hover:shadow-[0px_4px_0px_0px_#FF931E]
+              active:translate-y-1 active:shadow-[0px_2px_0px_0px_#FF931E] ${
                 !canNext ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
@@ -208,9 +231,20 @@ export default function FormInfo({ onSubmit }) {
             </button>
           ) : (
             <button
-              type="submit"
-              disabled={submitting}
-              className="px-4 py-2 bg-white text-black rounded flex items-center"
+              type="button"
+              onClick={handleSubmit}
+              disabled={submitting || !canNext}
+              className={`inline-flex items-center justify-center
+              h-10 w-[137px]
+              gap-2.5 rounded-[30px]
+              bg-white px-5 py-2.5
+              font-semibold text-black
+              shadow-[0px_5px_0px_0px_#FF931E]
+              transition-all duration-150
+              hover:shadow-[0px_4px_0px_0px_#FF931E]
+              active:translate-y-1 active:shadow-[0px_2px_0px_0px_#FF931E] ${
+                !canNext ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
               {submitting ? (
                 <span className="inline-block w-4 h-4 border-2 border-t-transparent rounded-full animate-spin mr-2" />
