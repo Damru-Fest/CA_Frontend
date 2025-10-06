@@ -103,8 +103,8 @@ const CaRegister = () => {
                 {/* Right Side: Registration Form */}
                 <div className="w-full max-w-md lg:w-1/3 bg-black/70 backdrop-blur-sm border border-gray-600 rounded-2xl p-6 shadow-2xl">
                     <h2 className="text-3xl font-bold text-center mb-2" style={{ fontFamily: 'serif' }}>Register for CA</h2>
-                    <button className="w-full flex items-center justify-center gap-2 bg-white text-black font-semibold rounded-full py-2.5 px-4 hover:bg-gray-200 transition">
-                        <GoogleIconSVG className="h-6 w-6" /> Sign Up with Google
+                    <button className="w-full flex items-center justify-center gap-2 bg-white text-black font-[Montserrat] font-semibold rounded-full py-2.5 px-4 hover:bg-gray-200 transition">
+                        <GoogleIconSVG className="h-6 w-6 font-[Montserrat] " /> Sign Up with Google
                     </button>
                     <p className="text-xs text-gray-400 text-center mt-2 px-4">By clicking "Sign Up with Google", you agree to the <a href="#" className="underline">Terms of Service</a> and acknowledge <a href="#" className="underline">Privacy Policy</a>.</p>
                     <div className="flex items-center my-4">
@@ -116,7 +116,7 @@ const CaRegister = () => {
                         <div>
                             <div className="relative">
                                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                                <input type="text" name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                <input type="text" name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none font-[Montserrat] focus:ring-2 focus:ring-blue-500" />
                             </div>
                             {errors.fullName && <p className="text-red-500 text-xs mt-1 ml-1">{errors.fullName}</p>}
                         </div>
@@ -124,7 +124,7 @@ const CaRegister = () => {
                         <div>
                             <div className="relative">
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                                <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 font-[Montserrat] focus:ring-blue-500" />
                             </div>
                             {errors.email && <p className="text-red-500 text-xs mt-1 ml-1">{errors.email}</p>}
                         </div>
@@ -132,7 +132,7 @@ const CaRegister = () => {
                         <div>
                             <div className="relative">
                                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                                <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 font-[Montserrat] focus:ring-blue-500" />
                             </div>
                             {errors.password && <p className="text-red-500 text-xs mt-1 ml-1">{errors.password}</p>}
                         </div>
@@ -140,7 +140,7 @@ const CaRegister = () => {
                         <div>
                             <div className="relative">
                                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                                <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} className="w-full bg-gray-800/50 border border-gray-600 rounded-lg pl-10 pr-4 py-2 focus:outline-none font-[Montserrat] focus:ring-2 focus:ring-blue-500" />
                             </div>
                             {errors.confirmPassword && <p className="text-red-500 text-xs mt-1 ml-1">{errors.confirmPassword}</p>}
                         </div>
@@ -153,7 +153,7 @@ const CaRegister = () => {
                             {errors.terms && <p className="text-red-500 text-xs mt-1 ml-1">{errors.terms}</p>}
                         </div>
 
-                        <button type="submit" className="w-full bg-white text-black font-bold rounded-full py-2.5 mt-4 hover:bg-gray-200 transition">Sign Up</button>
+                        <button type="submit" className="w-full bg-white text-black font-[Montserrat] font-bold rounded-full py-2.5 mt-4 hover:bg-gray-200 transition">Sign Up</button>
                     </form>
                 </div>
             </main>
