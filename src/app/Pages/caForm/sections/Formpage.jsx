@@ -1,6 +1,25 @@
-import { rgba } from "motion";
+"use client";
 
+import { useEffect, useRef, useState } from "react";
+import { redirect } from "next/navigation";
+import { useAuth } from "@/app/context/AuthContext";
+import FormInfo from "./FormInfo";
 export default function FormPage() {
+  const [showForm, setShowForm] = useState(false);
+  const { user, loading, setLoading } = useAuth();
+  console.log(loading);
+  useEffect(() => {
+    if (user) {
+      setShowForm(true);
+    } else {
+      setShowForm(false);
+    }
+  }, [user]);
+  const handleGoogleSignIn = () => {
+    setLoading(true);
+    redirect(`${process.env.NEXT_PUBLIC_API_URL}/auth/google`);
+  };
+
   return (
     <div
       className="flex flex-col z-20  border-amber-600 border-2 rounded-lg py-5 px-10 h-fit  justify-center  md:w-140 w-100"
@@ -10,106 +29,51 @@ export default function FormPage() {
         Register for CA
       </h1>
 
-      <button
-        className="text-center bg-white text-black mb-5 md:w-100 w-50 rounded-4xl p-2 self-center "
-        style={{ cursor: "pointer" }}
-      >
-        Sign Up with Google
-      </button>
-      <p className="text-center mb-7" style={{ fontSize: "15px" }}>
-        By clicking “Sign Up with Google”, You agree to the <br />
-        <a
-          href=""
-          className="text-white"
-          style={{ textDecoration: "Underline" }}
-        >
-          Terms of Service{" "}
-        </a>
-        and acknowledge{" "}
-        <a
-          href=""
-          className="text-white"
-          style={{ textDecoration: "Underline" }}
-        >
-          Privacy Policy
-        </a>
-      </p>
+      {!showForm ? (
+        <div className="flex flex-col items-center">
+          <button
+            onClick={handleGoogleSignIn}
+            className="text-center bg-white text-black mb-5 md:w-100 w-50 rounded-4xl p-2 self-center flex items-center justify-center gap-3"
+            style={{ cursor: loading ? "not-allowed" : "pointer" }}
+            aria-live="polite"
+            aria-busy={loading}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <span className="inline-block w-5 h-5 border-2 border-t-transparent rounded-full animate-spin mr-2" />
+                <span>Connecting with google...</span>
+              </>
+            ) : (
+              <span> Sign Up with Google</span>
+            )}
+          </button>
+
+          <p className="text-center mb-7" style={{ fontSize: "15px" }}>
+            By clicking Sign Up with Google, You agree to the <br />
+            <a
+              href="#"
+              className="text-white"
+              style={{ textDecoration: "Underline" }}
+            >
+              Terms of Service
+            </a>{" "}
+            and acknowledge{" "}
+            <a
+              href="#"
+              className="text-white"
+              style={{ textDecoration: "Underline" }}
+            >
+              Privacy Policy
+            </a>
+          </p>
+        </div>
+      ) : null}
 
       <hr className="mb-5" />
 
-      <form action="" className="flex flex-col">
-        <label
-          htmlFor="name"
-          className="mb-2"
-          style={{ fontFamily: "Montserrat" }}
-        >
-          Full Name
-        </label>
-        <input
-          type="text"
-          className="border-2  border-gray-500  p-3  outline-0 rounded-2xl mb-3"
-          style={{ backgroundColor: "#1E1E1E" }}
-          placeholder="Name"
-          required
-        />
-        <label className="mb-2" htmlFor="email">
-          Email
-        </label>
-        <input
-          type="email"
-          className="border-2 border-gray-500  p-3 outline-0 rounded-2xl mb-3"
-          style={{ backgroundColor: "#1E1E1E" }}
-          placeholder="Email"
-          required
-        />
-        <label className="mb-2" htmlFor="password">
-          Password
-        </label>
-        <input
-          type="password"
-          className="border-2 border-gray-500  p-3 outline-0 rounded-2xl mb-3"
-          style={{ backgroundColor: "#1E1E1E" }}
-          placeholder="*****"
-          required
-        />
-        <label className="mb-2" htmlFor="confirm-password">
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          className="border-1 border-gray-500  p-3 rounded-2xl mb-5"
-          style={{ backgroundColor: "#1E1E1E" }}
-          placeholder="*******"
-          required
-        />
-        <div className="mb-5">
-          <input
-            type="checkbox"
-            required
-            className="mx-2 border-gray-500"
-            style={{ backgroundColor: "#1E1E1E" }}
-            id="terms"
-          />
-          <label htmlFor="terms" className="text-center">
-            I agree to the{" "}
-            <a href="" style={{ textDecoration: "Underline" }}>
-              Terms of Service
-            </a>{" "}
-            by cogni.study and acknolwedge{" "}
-            <a href="" style={{ textDecoration: "Underline" }}>
-              Privacy Policy
-            </a>{" "}
-          </label>
-        </div>
-
-        <button
-          type="submit"
-          className="text-center bg-white text-black mb-5 md:w-100 w-50 rounded-4xl p-2 self-center"
-          style={{ cursor: "pointer" }}
-        >
-          Sign Up
-        </button>
-      </form>
+      {/* Conditionally render the real form only after OAuth success */}
+      {showForm ? <FormInfo /> : null}
     </div>
   );
 }
