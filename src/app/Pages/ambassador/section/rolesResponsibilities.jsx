@@ -1,4 +1,3 @@
- 
 // import React from "react";
 
 // const RolesResponsibilities = () => {
@@ -31,7 +30,6 @@
 //                 className="absolute top-[70%] -translate-y-1/2 left-0 h-full rotate-180 object-contain"
 //             />
 
-
 //             <img
 //                 src={rightSplash2}
 //                 alt="Left Splash"
@@ -48,7 +46,6 @@
 //                     Roles & Responsibilities
 //                 </h1>
 //             </div>
-
 
 //             <img
 //                 src={centerImage}
@@ -88,9 +85,9 @@
 //      gsap.timeline({
 //       scrollTrigger: {
 //         trigger: containerRef.current,
-//         start: "top 40%", 
-//         end: "bottom top", 
-//         toggleActions: "play reverse play reverse", 
+//         start: "top 40%",
+//         end: "bottom top",
+//         toggleActions: "play reverse play reverse",
 //       },
 //     })
 //       .from(leftSplashRef.current, { x: "-100%", opacity: 0, duration: 1.2, ease: "power3.out" })
@@ -98,7 +95,6 @@
 //       .from(rightSplashRef.current, { x: "100%", opacity: 0, duration: 1.2, ease: "power3.out" }, "-=1")
 //       .from(rightSplash2Ref.current, { x: "100%", opacity: 0, duration: 1.2, ease: "power3.out" }, "-=1");
 
-    
 //     gsap.to(circularRef.current, {
 //       rotation: 360,
 //       duration: 20,
@@ -112,9 +108,9 @@
 //       ref={containerRef}
 //       className="relative flex items-center justify-center w-full overflow-hidden h-[500px] sm:h-[600px] md:h-screen"
 //     >
-     
+
 //       <img
-      
+
 //         src={circularPath}
 //         alt="Circular Path"
 //         className="absolute bottom-0 left-0 w-full h-full object-cover"
@@ -148,14 +144,12 @@
 //         className="absolute top-0 right-0 h-full object-contain"
 //       />
 
- 
 //       <div className="relative text-center z-10 px-4">
 //         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
 //           Roles & Responsibilities
 //         </h1>
 //       </div>
 
-    
 //       <img
 //         ref={circularRef}
 //         src={centerImage}
@@ -167,7 +161,6 @@
 // };
 
 // export default RolesResponsibilities;
-
 
 "use client";
 
@@ -203,17 +196,39 @@ const RolesResponsibilities = () => {
       },
     });
 
-    tl.from(leftSplashRef.current, { x: "-100%", opacity: 0, duration: 1.2, ease: "power3.out" })
-      .from(leftSplash2Ref.current, { x: "-100%", opacity: 0, duration: 1.2, ease: "power3.out" }, "-=1")
-      .from(rightSplashRef.current, { x: "100%", opacity: 0, duration: 1.2, ease: "power3.out" }, "-=1")
-      .from(rightSplash2Ref.current, { x: "100%", opacity: 0, duration: 1.2, ease: "power3.out" }, "-=1")
-      .from(textContainerRef.current.children, { // Animating the list items
-        opacity: 0,
-        y: 20,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power3.out",
-      }, "-=0.8"); // Timing the text animation
+    tl.from(leftSplashRef.current, {
+      x: "-100%",
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+    })
+      .from(
+        leftSplash2Ref.current,
+        { x: "-100%", opacity: 0, duration: 1.2, ease: "power3.out" },
+        "-=1"
+      )
+      .from(
+        rightSplashRef.current,
+        { x: "100%", opacity: 0, duration: 1.2, ease: "power3.out" },
+        "-=1"
+      )
+      .from(
+        rightSplash2Ref.current,
+        { x: "100%", opacity: 0, duration: 1.2, ease: "power3.out" },
+        "-=1"
+      )
+      .from(
+        textContainerRef.current.children,
+        {
+          // Animating the list items
+          opacity: 0,
+          y: 20,
+          stagger: 0.2,
+          duration: 0.2,
+          ease: "power3.out",
+        },
+        "-=0.2"
+      ); // Timing the text animation
 
     gsap.to(circularRef.current, {
       rotation: 360,
@@ -269,27 +284,42 @@ const RolesResponsibilities = () => {
         </h1>
 
         {/* List of responsibilities */}
-        <div ref={textContainerRef} className="max-w-3xl mx-auto bg-black/30 backdrop-blur-sm p-6 rounded-lg border border-white/10">
+        <div ref={textContainerRef} className="max-w-3xl mx-auto  p-6 ">
           <ul className="space-y-4 text-left text-gray-200 text-base sm:text-lg">
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
-              <span>Promote Damru-25 across the campus via social media, posters, and word of mouth.</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
+              <span>
+                Promote Damru-25 across the campus via social media, posters,
+                and word of mouth.
+              </span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
-              <span>Drive registrations for competitions, workshops, and flagship events.</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
+              <span>
+                Drive registrations for competitions, workshops, and flagship
+                events.
+              </span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
-              <span>Serve as the first point of contact for student queries regarding events or registrations.</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
+              <span>
+                Serve as the first point of contact for student queries
+                regarding events or registrations.
+              </span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
-              <span>Organize mini pre-fest activities like info sessions or campus contests.</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
+              <span>
+                Organize mini pre-fest activities like info sessions or campus
+                contests.
+              </span>
             </li>
             <li className="flex items-start">
-              <span className="text-blue-400 mr-3 mt-1">&#10022;</span>
-              <span>Create and share digital content (reels, memes, posters) to boost engagement.</span>
+              <span className="text-[#FF931E] mr-3 mt-1">&#10022;</span>
+              <span>
+                Create and share digital content (reels, memes, posters) to
+                boost engagement.
+              </span>
             </li>
           </ul>
         </div>
