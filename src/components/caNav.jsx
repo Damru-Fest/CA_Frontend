@@ -87,7 +87,7 @@ const Navbar = () => {
         md:bg-transparent md:border-0 md:backdrop-blur-none
       `}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container flex items-center justify-between min-w-full">
         {/* Logo */}
         <Link href="/">
           <Image src="/ambassdorAssets/logo.png" alt="Damru Logo" width={120} height={40} />

@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/app/context/AuthContext";
 import FormInfo from "./FormInfo";
 export default function FormPage() {
@@ -25,23 +24,30 @@ export default function FormPage() {
 
   const handleGoogleSignIn = () => {
     setLoading(true);
-    redirect(`${process.env.NEXT_PUBLIC_API_URL}/auth/google`);
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
   };
 
-  const [collectedData, setCollectedData] = useState(null);
   const [submittingForm, setSubmittingForm] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleFormSubmit = async (formData) => {
     setSubmittingForm(true);
+    setError(null);
 
-    const success = await caSubmit(formData);
-    if (success) {
-      setApplicationSubmitted(true);
-      setShowForm(false);
+    try {
+      const success = await caSubmit(formData);
+      if (success) {
+        setApplicationSubmitted(true);
+        setShowForm(false);
+      } else {
+        setError("Failed to submit application. Please try again.");
+      }
+    } catch (err) {
+      setError("An error occurred while submitting your application.");
+      console.error("Form submission error:", err);
+    } finally {
+      setSubmittingForm(false);
     }
-    setCollectedData(formData);
-    console.log("Final collected data:", formData);
-    setSubmittingForm(false);
   };
 
   return (
@@ -53,7 +59,7 @@ export default function FormPage() {
         {applicationSubmitted ? "Application Received" : "Register for CA"}
       </h1>
 
-      {applicationSubmitted ? (
+      {applicationSubmitted && (
         <div className="flex flex-col items-center text-center py-8">
           <p className="text-gray-300 mb-4 leading-relaxed">
             We have received your Campus Ambassador application and it is now
@@ -64,11 +70,13 @@ export default function FormPage() {
             update on your application status.
           </p>
         </div>
-      ) : !showForm ? (
+      )}
+
+      {!showForm && !applicationSubmitted && (
         <div className="flex flex-col items-center">
           <button
             onClick={handleGoogleSignIn}
-            className="text-center bg-white text-black mb-5 md:w-100 w-50 rounded-4xl p-2 self-center flex items-center justify-center gap-3"
+            className="text-center bg-white text-black mb-5 md:w-100 w-50 rounded-4xl p-2 self-center flex items-center justify-center gap-3 transition-opacity duration-200"
             style={{ cursor: loading ? "not-allowed" : "pointer" }}
             aria-live="polite"
             aria-busy={loading}
@@ -76,41 +84,47 @@ export default function FormPage() {
           >
             {loading ? (
               <>
-                <span className="inline-block w-5 h-5 border-2 border-t-transparent rounded-full animate-spin mr-2" />
-                <span>Connecting with google...</span>
+                <span className="inline-block w-5 h-5 border-2 border-t-transparent border-black rounded-full animate-spin mr-2" />
+                <span>Connecting with Google...</span>
               </>
             ) : (
-              <span> Sign Up with Google</span>
+              <span>Sign Up with Google</span>
             )}
           </button>
 
-          <p className="text-center mb-7" style={{ fontSize: "15px" }}>
-            By clicking Sign Up with Google, You agree to the <br />
+          <p className="text-center mb-7 text-sm text-gray-300">
+            By clicking Sign Up with Google, you agree to the{" "}
+            <br className="md:hidden" />
             <a
               href="#"
-              className="text-white"
-              style={{ textDecoration: "Underline" }}
+              className="text-white underline hover:text-amber-400 transition-colors"
             >
               Terms of Service
             </a>{" "}
-            and acknowledge{" "}
+            and acknowledge our{" "}
             <a
               href="#"
-              className="text-white"
-              style={{ textDecoration: "Underline" }}
+              className="text-white underline hover:text-amber-400 transition-colors"
             >
               Privacy Policy
             </a>
           </p>
         </div>
-      ) : null}
+      )}
 
       {!applicationSubmitted && <hr className="mb-5" />}
 
+      {/* Error display */}
+      {error && (
+        <div className="mb-4 p-3 bg-red-900 border border-red-500 rounded-lg text-red-200">
+          {error}
+        </div>
+      )}
+
       {/* Conditionally render the real form only after OAuth success and no existing application */}
-      {showForm && !applicationSubmitted ? (
-        <FormInfo onSubmit={handleFormSubmit} />
-      ) : null}
+      {showForm && !applicationSubmitted && (
+        <FormInfo onSubmit={handleFormSubmit} submitting={submittingForm} />
+      )}
     </div>
   );
 }
