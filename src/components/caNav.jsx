@@ -1,46 +1,4 @@
- 
 
-// import Link from 'next/link';
-// import Image from 'next/image';
-// import ActionButton from './ActionButton'; 
-
-// const navLinks = [
-//   { name: 'About', href: '#' },
-//   { name: 'Role & Responsibilities', href: '#' },
-//   { name: 'Benefits', href: '#' },
-// ];
-
-// const Navbar = () => {
-//   return (
-//     <nav className="absolute top-0 left-0 z-99 w-full bg-transparent px-6 py-4 lg:px-12">
-//       <div className="container mx-auto flex items-center justify-between">
-        
-//         <Link href="/">
-//            <Image src="/ambassdorAssets/logo.png" alt="Damru Logo" width={120} height={40} />
-//         </Link>
-
-        
-//         <div className="flex items-center gap-8">
-//           <div className="hidden items-center gap-8 md:flex">
-//             {navLinks.map((link) => (
-//               <Link
-//                 key={link.name}
-//                 href={link.href}
-//                 className="text-white hover:text-gray-300 transition-colors"
-//               >
-//                 {link.name}
-//               </Link>
-//             ))}
-//           </div>
-    
-//           <ActionButton/>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
 
 "use client";
 import { useEffect, useState, useRef } from 'react';
