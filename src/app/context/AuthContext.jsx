@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import axios from "@/lib/axios";
+import axiosInstance from "@/lib/axios";
 
 const AuthContext = createContext();
 
@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   const [app, setApp] = useState(false);
   const getMe = async () => {
     try {
-      const response = await axios.get("/auth/me");
+      const response = await axiosInstance.get("/auth/me");
       if (response.data.data.user) {
         setUser(response.data.data.user);
       }
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const caSubmit = async (data) => {
     try {
-      const response = await axios.post("/auth/caForm", data);
+      const response = await axiosInstance.post("/auth/caForm", data);
       // Update app state to reflect successful submission
       setApp(true);
       return true;
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
 
   const caGet = async () => {
     try {
-      const response = await axios.get("/auth/caForm");
+      const response = await axiosInstance.get("/auth/caForm");
       if (response?.data?.message === "Application found") {
         setApp(true);
       }
