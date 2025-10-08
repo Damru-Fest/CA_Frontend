@@ -168,7 +168,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
           >
             {/* college */}
             <label className="mb-2" htmlFor="college">
-              College *
+              College
             </label>
             <input
               id="college"
@@ -189,7 +189,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
 
             {/* year */}
             <label className="mb-2" htmlFor="yearOfStudy">
-              Year of Study *
+              Year of Study
             </label>
             <select
               id="yearOfStudy"
@@ -218,27 +218,18 @@ export default function FormInfo({ onSubmit, submitting = false }) {
             </div>
 
             {/* stream */}
-            <label className="mb-2" htmlFor="stream">
-              Stream *
+            <label className="mb-2" htmlFor="college">
+              Stream
             </label>
-            <select
+            <input
               id="stream"
               name="stream"
+              type="text"
               value={data.stream}
               onChange={handleChange}
-              className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E] text-white focus:border-amber-500 focus:outline-none"
-            >
-              <option value="" disabled>
-                Select your stream
-              </option>
-              {["B.Tech", "BBA", "B.Sc", "B.Com", "BA", "B.Des", "Others"].map(
-                (s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                )
-              )}
-            </select>
+              className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E] text-white placeholder-gray-400 focus:border-amber-500 focus:outline-none"
+              placeholder="Enter your stream name"
+            />
             <div className="h-6 mb-1">
               {getFieldError("stream") && (
                 <p className="text-red-400 text-sm">
@@ -261,7 +252,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
             className="flex flex-col"
           >
             <label className="mb-2" htmlFor="linkedinUrl">
-              LinkedIn Profile *
+              LinkedIn Profile
             </label>
             <input
               id="linkedinUrl"
@@ -281,7 +272,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
             </div>
 
             <label className="mb-2" htmlFor="instagramUrl">
-              Instagram Profile *
+              Instagram Profile
             </label>
             <input
               id="instagramUrl"
@@ -301,7 +292,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
             </div>
 
             <label className="mb-2" htmlFor="phoneNumber">
-              Phone Number *
+              Phone Number
             </label>
             <input
               id="phoneNumber"
@@ -334,7 +325,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
             className="flex flex-col"
           >
             <label className="mb-2" htmlFor="previousExperience">
-              Previous Ambassador / Leadership Experience *
+              Previous Ambassador / Leadership Experience
             </label>
             <textarea
               id="previousExperience"
@@ -367,7 +358,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
             className="flex flex-col"
           >
             <label className="mb-2" htmlFor="whyAmbassador">
-              Why do you want to be a Campus Ambassador? *
+              Why do you want to be a Campus Ambassador?
             </label>
             <textarea
               id="whyAmbassador"
