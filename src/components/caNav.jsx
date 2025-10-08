@@ -144,6 +144,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const bellIconRef = useRef(null);
 
   // GSAP animation for bell icon
@@ -164,8 +165,19 @@ const Navbar = () => {
     document.body.style.overflowX = menuOpen ? 'hidden' : 'auto';
   }, [menuOpen]);
 
+  // Detect scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) setScrolled(true);
+      else setScrolled(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Smooth scroll handler
-  const handleScroll = (id) => {
+  const handleScrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
       const offset = 80; // adjust based on navbar height
@@ -179,10 +191,12 @@ const Navbar = () => {
     <nav
       className={`
         fixed top-0 left-0 z-50 w-full 
-        transition-colors duration-300
-        px-6 py-4 lg:px-12
-        ${menuOpen ? 'bg-white/20 backdrop-blur-lg border border-white/30 rounded-b-xl' : 'bg-transparent'}
-        md:bg-transparent md:border-0 md:backdrop-blur-none
+        transition-all duration-300 px-6 py-2 lg:px-12
+        ${menuOpen
+          ? 'bg-white/20 backdrop-blur-lg border border-white/30 rounded-b-xl'
+          : scrolled
+          ? 'md:bg-white/2 md:backdrop-blur-lg   md:rounded-b-xl'
+          : 'bg-transparent'}
       `}
     >
       <div className="container flex items-center justify-between">
@@ -196,7 +210,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <button
               key={link.name}
-              onClick={() => handleScroll(link.href.replace('#', ''))}
+              onClick={() => handleScrollTo(link.href.replace('#', ''))}
               className="text-white hover:text-gray-300 transition-colors font-['Montserrat'] cursor-pointer"
             >
               {link.name}
@@ -253,7 +267,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <button
               key={link.name}
-              onClick={() => handleScroll(link.href.replace('#', ''))}
+              onClick={() => handleScrollTo(link.href.replace('#', ''))}
               className="hover:text-gray-300 cursor-pointer transition-colors"
             >
               {link.name}
