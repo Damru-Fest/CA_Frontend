@@ -307,6 +307,7 @@ const RolesResponsibilities = () => {
 
   return (
     <section
+      id="roles"
       ref={containerRef}
       className="relative flex items-center justify-center w-full overflow-hidden min-h-screen py-20"
       aria-labelledby="roles-heading"

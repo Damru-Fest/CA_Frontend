@@ -6,16 +6,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import ActionButton from './actionButton';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navLinks = [
-  { name: 'About', href: '#' },
-  { name: 'Role & Responsibilities', href: '#' },
-  { name: 'Benefits', href: '#' },
+  { name: 'About', id: 'about', path: '/Pages/ambassador' },
+  { name: 'Role & Responsibilities', id: 'roles', path: '/Pages/ambassador' },
+  { name: 'Benefits', id: 'benefits', path: '/Pages/ambassador' },
 ];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const bellIconRef = useRef(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
   // GSAP animation for bell icon
   useEffect(() => {
@@ -56,8 +59,29 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.href}
+              href={link.path + (link.id ? `#${link.id}` : '')}
               className="text-white hover:text-gray-300 transition-colors"
+              onClick={(e) => {
+                // Handle smooth in-page scroll when already on the ambassador page
+                if (link.id && pathname && pathname.includes('/ambassador')) {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  const el = document.getElementById(link.id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return;
+                  }
+                }
+
+                // Otherwise, navigate to the ambassador page with hash
+                // Let Next handle the navigation if pathname is different
+                if (link.id && link.path && !pathname?.includes('/ambassador')) {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  // push with hash so browser navigates to section
+                  router.push(link.path + `#${link.id}`);
+                }
+              }}
             >
               {link.name}
             </Link>
@@ -113,9 +137,22 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.href}
+              href={link.path + (link.id ? `#${link.id}` : '')}
               className="hover:text-gray-300 transition-colors"
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => {
+                // Close menu first
+                setMenuOpen(false);
+                // If already on the ambassador page, perform smooth scroll
+                if (link.id && pathname && pathname.includes('/ambassador')) {
+                  e.preventDefault();
+                  const el = document.getElementById(link.id);
+                  if (el) {
+                    // small timeout to allow menu to close and layout to settle
+                    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+                  }
+                }
+                // otherwise allow Link/router to navigate to the page with hash
+              }}
             >
               {link.name}
             </Link>

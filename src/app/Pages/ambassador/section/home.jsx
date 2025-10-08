@@ -26,6 +26,7 @@ const CampusAmbassador = () => {
   return (
     <>
       <div
+        id="about"
         className="relative flex flex-col items-center justify-center min-h-screen w-full bg-cover bg-center bg-no-repeat text-white p-4"
         style={{
           backgroundImage: `url(${bgImageUrl})`,
