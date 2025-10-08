@@ -45,7 +45,7 @@ export default function Form() {
             width={0} // let Tailwind handle sizing
             height={0}
             sizes="100vw"
-            className="w-24 sm:w-32 md:w-40 lg:w-48 h-auto"
+            className="w-24 sm:w-32 md:w-40   lg:w-30 h-auto"
             priority
           />
         </Link>
