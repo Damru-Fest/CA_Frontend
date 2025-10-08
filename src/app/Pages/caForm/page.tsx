@@ -37,19 +37,23 @@ export default function Form() {
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col">
-      <div className="absolute top-5 left-10 z-100">
+      <div className="absolute top-5 left-6 sm:left-10 z-[100]">
         <Link href="/">
           <Image
             src="/ambassdorAssets/logo.png"
             alt="Damru Logo"
-            width={120}
-            height={40}
+            width={0} // let Tailwind handle sizing
+            height={0}
+            sizes="100vw"
+            className="w-24 sm:w-32 md:w-40 lg:w-48 h-auto"
+            priority
           />
         </Link>
       </div>
-      <div className="flex-1 flex flex-row justify-center items-center gap-10 text-white pt-20 h-max-[80%]">
-        <Home></Home>
-        <Formpage></Formpage>
+
+      <div className="flex-1 flex flex-row justify-center items-center gap-10 text-white pt-20 max-h-[80%]">
+        <Home />
+        <Formpage />
       </div>
     </div>
   );
