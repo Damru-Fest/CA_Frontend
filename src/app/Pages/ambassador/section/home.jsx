@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import ActionButton from '../../../../components/ActionButton';
+import ActionButton from '../../../../components/actionButton';
 
 const CampusAmbassador = () => {
   const bgImageUrl = '/ambassdorAssets/cabghome.png';

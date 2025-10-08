@@ -1,5 +1,5 @@
  
-import ActionButton from '../../components/ActionButton';
+import ActionButton from '../../components/actionButton';
 import React from 'react';
 
 const Banner = () => (

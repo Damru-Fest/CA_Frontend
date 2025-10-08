@@ -3,7 +3,7 @@ import React from "react";
 import { useAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-const ActionButton = () => {
+const actionButton = () => {
   const { user } = useAuth();
   const router = useRouter();
 
@@ -25,4 +25,4 @@ const ActionButton = () => {
   );
 };
 
-export default ActionButton;
+export default actionButton;

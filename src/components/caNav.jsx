@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import ActionButton from './ActionButton';
+import ActionButton from './actionButton';
 
 const navLinks = [
   { name: 'About', href: '#' },
