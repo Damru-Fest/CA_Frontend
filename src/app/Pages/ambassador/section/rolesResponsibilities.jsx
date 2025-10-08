@@ -224,7 +224,7 @@ const RolesResponsibilities = () => {
   }, []);
 
   return (
-    <div
+    <div id="roles"
       ref={containerRef}
       className="relative flex items-center justify-center w-full overflow-hidden h-auto py-20 md:h-screen"
     >

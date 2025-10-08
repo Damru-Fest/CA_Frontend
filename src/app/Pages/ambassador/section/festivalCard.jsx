@@ -803,7 +803,7 @@ const DamruFest = () => {
 
   return (
     <>
-      <div 
+      <div id='about'
         ref={sectionRef}
         className="relative flex flex-col items-center justify-center min-h-screen w-full bg-black text-white p-4 overflow-hidden"
       >
@@ -888,8 +888,8 @@ const DamruFest = () => {
 
 
           <div className="text-center max-w-2xl mt-8">
-            <p className="text-base md:text-lg leading-relaxed">
-              The <span className="font-bold">Damru Fest</span> is an annual two-day cultural carnival hosted by Rishihood
+            <p className="text-base md:text-lg font-['Pujarelah'] font-light leading-relaxed">
+              The  Damru Fest  is an annual two-day cultural carnival hosted by Rishihood
               University in Delhi NCR. The 2024 edition ran on 29th & 30th November featured live
               music, dance battles, <br className="hidden md:inline" />art installations, workshops and more — designed to draw both campus and off
               campus crowds
