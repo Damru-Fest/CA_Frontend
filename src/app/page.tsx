@@ -66,7 +66,7 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen">
       {/* Landing Animation */}
       {(showLanding || (isFirstVisit && !animationComplete)) && (
         <div ref={landingRef} className="absolute inset-0 z-30 opacity-100">
