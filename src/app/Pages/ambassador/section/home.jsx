@@ -1,13 +1,13 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import ActionButton from '../../../../components/actionButton';
+import React from "react";
+import { motion } from "framer-motion";
+import ActionButton from "../../../../components/actionButton";
 
 const CampusAmbassador = () => {
-  const bgImageUrl = '/ambassdorAssets/cabghome.png';
-  const decorativeOverlayUrl = '/ambassdorAssets/decorative.png';
-  const announcerImageUrl = '/ambassdorAssets/caAnnouncement.png';
-  const colorfulSplashUrl = '/ambassdorAssets/caAnnouncement2.png';
+  const bgImageUrl = "/ambassdorAssets/cabghome.png";
+  const decorativeOverlayUrl = "/ambassdorAssets/decorative.png";
+  const announcerImageUrl = "/ambassdorAssets/caAnnouncement.png";
+  const colorfulSplashUrl = "/ambassdorAssets/caAnnouncement2.png";
 
   // Framer Motion variants for text elements with stagger
   const textVariants = {
@@ -18,7 +18,7 @@ const CampusAmbassador = () => {
       transition: {
         delay: i * 0.3,
         duration: 0.6,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     }),
   };
@@ -26,7 +26,6 @@ const CampusAmbassador = () => {
   return (
     <>
       <div
-        id="about"
         className="relative flex flex-col items-center justify-center min-h-screen w-full bg-cover bg-center bg-no-repeat text-white p-4"
         style={{
           backgroundImage: `url(${bgImageUrl})`,
@@ -39,7 +38,7 @@ const CampusAmbassador = () => {
           style={{ opacity: 0.6 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
-          transition={{ duration: 2, ease: 'easeInOut' }}
+          transition={{ duration: 2, ease: "easeInOut" }}
         />
 
         <div className="absolute inset-0 bg-black opacity-80 z-20"></div>
@@ -57,7 +56,7 @@ const CampusAmbassador = () => {
               className="absolute top-1/2 left-1/2 h-full w-full scale-[2.3] -translate-x-1/2 object-contain"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1.2, opacity: 1 }}
-              transition={{ duration: 1.2, ease: 'easeOut' }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
             />
           </div>
 
@@ -78,7 +77,9 @@ const CampusAmbassador = () => {
             animate="visible"
             variants={textVariants}
           >
-            Campus<br />Ambassador
+            Campus
+            <br />
+            Ambassador
           </motion.h1>
 
           <motion.p
@@ -98,13 +99,14 @@ const CampusAmbassador = () => {
             animate="visible"
             variants={textVariants}
           >
-            Represent your campus and unlock exclusive benefits like certificates, pronite tickets and more
+            Represent your campus and unlock exclusive benefits like
+            certificates, pronite tickets and more
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 0.6, ease: 'easeOut' }}
+            transition={{ delay: 1.5, duration: 0.6, ease: "easeOut" }}
           >
             <ActionButton />
           </motion.div>

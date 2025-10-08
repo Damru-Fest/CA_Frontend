@@ -1,17 +1,15 @@
-
-
 "use client";
-import { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { gsap } from 'gsap';
-import ActionButton from './actionButton';
-import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { gsap } from "gsap";
+import ActionButton from "./actionButton";
+import { usePathname, useRouter } from "next/navigation";
 
 const navLinks = [
-  { name: 'About', id: 'about', path: '/Pages/ambassador' },
-  { name: 'Role & Responsibilities', id: 'roles', path: '/Pages/ambassador' },
-  { name: 'Benefits', id: 'benefits', path: '/Pages/ambassador' },
+  { name: "About", id: "about", path: "/Pages/ambassador" },
+  { name: "Role & Responsibilities", id: "roles", path: "/Pages/ambassador" },
+  { name: "Benefits", id: "benefits", path: "/Pages/ambassador" },
 ];
 
 const Navbar = () => {
@@ -28,14 +26,14 @@ const Navbar = () => {
         repeat: -1,
         yoyo: true,
         duration: 0.8,
-        ease: 'power1.inOut',
+        ease: "power1.inOut",
       });
     }
   }, []);
 
   // Prevent horizontal scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflowX = menuOpen ? 'hidden' : 'auto';
+    document.body.style.overflowX = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
   return (
@@ -44,14 +42,23 @@ const Navbar = () => {
         fixed top-0 left-0 z-50 w-full
         transition-colors duration-300
         px-6 py-4 lg:px-12
-        ${menuOpen ? 'bg-white/20 backdrop-blur-lg border border-white/30 rounded-b-xl' : 'bg-transparent'}
+        ${
+          menuOpen
+            ? "bg-white/20 backdrop-blur-lg border border-white/30 rounded-b-xl"
+            : "bg-transparent"
+        }
         md:bg-transparent md:border-0 md:backdrop-blur-none
       `}
     >
       <div className="container flex items-center justify-between min-w-full">
         {/* Logo */}
         <Link href="/">
-          <Image src="/ambassdorAssets/logo.png" alt="Damru Logo" width={120} height={40} />
+          <Image
+            src="/ambassdorAssets/logo.png"
+            alt="Damru Logo"
+            width={120}
+            height={40}
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -59,23 +66,27 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.path + (link.id ? `#${link.id}` : '')}
+              href={link.path + (link.id ? `#${link.id}` : "")}
               className="text-white hover:text-gray-300 transition-colors"
               onClick={(e) => {
                 // Handle smooth in-page scroll when already on the ambassador page
-                if (link.id && pathname && pathname.includes('/ambassador')) {
+                if (link.id && pathname && pathname.includes("/ambassador")) {
                   e.preventDefault();
                   setMenuOpen(false);
                   const el = document.getElementById(link.id);
                   if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
                     return;
                   }
                 }
 
                 // Otherwise, navigate to the ambassador page with hash
                 // Let Next handle the navigation if pathname is different
-                if (link.id && link.path && !pathname?.includes('/ambassador')) {
+                if (
+                  link.id &&
+                  link.path &&
+                  !pathname?.includes("/ambassador")
+                ) {
                   e.preventDefault();
                   setMenuOpen(false);
                   // push with hash so browser navigates to section
@@ -129,26 +140,33 @@ const Navbar = () => {
       <div
         className={`
           md:hidden mt-4 transition-all duration-300 overflow-hidden
-          ${menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}
+          ${menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}
         `}
-        style={{ width: '100vw' }}
+        style={{ width: "100vw" }}
       >
         <nav className="flex flex-col gap-4 bg-black/50 backdrop-blur-lg border border-white/30 rounded-lg p-4 text-white w-[90%] box-border">
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.path + (link.id ? `#${link.id}` : '')}
+              href={link.path + (link.id ? `#${link.id}` : "")}
               className="hover:text-gray-300 transition-colors"
               onClick={(e) => {
                 // Close menu first
                 setMenuOpen(false);
                 // If already on the ambassador page, perform smooth scroll
-                if (link.id && pathname && pathname.includes('/ambassador')) {
+                if (link.id && pathname && pathname.includes("/ambassador")) {
                   e.preventDefault();
                   const el = document.getElementById(link.id);
                   if (el) {
                     // small timeout to allow menu to close and layout to settle
-                    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+                    setTimeout(
+                      () =>
+                        el.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        }),
+                      50
+                    );
                   }
                 }
                 // otherwise allow Link/router to navigate to the page with hash

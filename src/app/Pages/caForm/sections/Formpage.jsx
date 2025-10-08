@@ -10,7 +10,6 @@ export default function FormPage() {
 
   useEffect(() => {
     if (user) {
-      console.log(app);
       if (app) {
         setApplicationSubmitted(true);
         setShowForm(false);
