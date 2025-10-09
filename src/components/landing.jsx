@@ -70,27 +70,28 @@ export default function Landing({ onAnimationComplete }) {
   return (
     <>
       <div
-        className="relative flex flex-col items-center justify-center min-h-screen w-full bg-cover bg-center bg-no-repeat text-white p-4 overflow-hidden"
+        className="relative flex flex-col items-center justify-center min-h-screen w-full bg-cover bg-center sm:bg-center md:bg-center bg-no-repeat text-white p-2 sm:p-4 lg:p-8 overflow-hidden"
         style={{
           backgroundImage: `url(${bgImageUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
         }}
       >
         <motion.img
           src={decorativeOverlayUrl}
           alt="Decorative element"
-          className="absolute -top-40 -rotate-2 left-0 w-full h-auto"
+          className="absolute -top-20 sm:-top-32 md:-top-40 -rotate-2 left-0 w-full h-auto"
           style={{ opacity: 0.6 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           transition={{ duration: 2, ease: "easeInOut" }}
         />
 
-        <div className="absolute inset-0 bg-black opacity-80 z-20"></div>
-        <main className="relative z-30 flex flex-col items-center text-center space-y-2 md:space-y-4">
+        <div className="absolute inset-0 bg-black opacity-70 sm:opacity-75 md:opacity-80 z-20"></div>
+        <main className="relative z-30 flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6 md:space-y-8 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
           <svg
             ref={logoRef}
-            width="550"
-            height="450"
+            className="w-64 h-52 sm:w-80 sm:h-64 md:w-96 md:h-80 lg:w-[550px] lg:h-[450px] max-w-full"
             viewBox="0 0 123 88"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
