@@ -17,7 +17,15 @@ const Navbar = () => {
   const bellIconRef = useRef(null);
   const pathname = usePathname();
   const router = useRouter();
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   // GSAP animation for bell icon
   useEffect(() => {
     if (bellIconRef.current) {
@@ -39,16 +47,15 @@ const Navbar = () => {
   return (
     <nav
       className={`
-        fixed top-0 left-0 z-50 w-full
-        transition-colors duration-300
-        px-6 py-4 lg:px-12
-        ${
-          menuOpen
-            ? "bg-white/20 backdrop-blur-lg border border-white/30 rounded-b-xl"
-            : "bg-transparent"
-        }
-        md:bg-transparent md:border-0 md:backdrop-blur-none
-      `}
+    fixed top-0 left-0 z-50 w-full px-6 py-4 lg:px-12 transition-all duration-300
+    ${
+      menuOpen
+        ? "bg-white/20 backdrop-blur-lg border border-white/30 rounded-b-xl"
+        : scrolled
+        ? "bg-black/30 backdrop-blur-lg"
+        : "bg-transparent"
+    }
+  `}
     >
       <div className="container flex items-center justify-between min-w-full">
         {/* Logo */}
@@ -135,7 +142,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-
       {/* Mobile Menu */}
       <div
         className={`
