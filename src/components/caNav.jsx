@@ -56,6 +56,7 @@ const Navbar = () => {
         : "bg-transparent"
     }
   `}
+      style={{ zIndex: 1000 }}
     >
       <div className="container flex items-center justify-between min-w-full">
         {/* Logo */}
