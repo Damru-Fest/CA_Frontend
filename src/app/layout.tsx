@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon/favicon.ico",
+        url: "/favicon/favicon copy.ico",
         sizes: "any",
       },
       {
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
       },
     ],
     apple: {
-      url: "/favicon/apple-touch-icon.png",
+      url: "/favicon/apple-touch-icon copy.png",
       sizes: "180x180",
       type: "image/png",
     },
     other: [
       {
         rel: "icon",
-        url: "/favicon/web-app-manifest-192x192.png",
+        url: "/favicon/favicon-16x16.png",
         sizes: "192x192",
         type: "image/png",
       },

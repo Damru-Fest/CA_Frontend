@@ -47,12 +47,12 @@ const Navbar = () => {
   return (
     <nav
       className={`
-    fixed top-0 left-0 z-50 w-full px-6 py-4 lg:px-12 transition-all duration-300
+    fixed top-0 left-0 z-50 w-full px-6 py-2 lg:px-12 transition-all duration-300
     ${
       menuOpen
         ? "bg-white/20 backdrop-blur-lg border border-white/30 rounded-b-xl"
         : scrolled
-        ? "bg-black/30 backdrop-blur-lg"
+        ? "bg-black/10 backdrop-blur-lg"
         : "bg-transparent"
     }
   `}
