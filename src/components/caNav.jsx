@@ -6,13 +6,36 @@ import { gsap } from "gsap";
 import ActionButton from "./actionButton";
 import { usePathname, useRouter } from "next/navigation";
 
-const navLinks = [
-  { name: "About", id: "about", path: "/Pages/ambassador" },
-  { name: "Role & Responsibilities", id: "roles", path: "/Pages/ambassador" },
-  { name: "Benefits", id: "benefits", path: "/Pages/ambassador" },
-];
+
+
 
 const Navbar = () => {
+  const [navLinks, setNavLinks] = useState([
+    { name: "About", id: "about", path: "/Pages/ambassador" },
+    { name: "Role & Responsibilities", id: "roles", path: "/Pages/ambassador" },
+    { name: "Benefits", id: "benefits", path: "/Pages/ambassador" },
+  ]);
+   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isAdmin = sessionStorage.getItem("adminLoggedIn") === "true";
+
+      setNavLinks((prev) => {
+      
+        const alreadyHasAdmin = prev.some((link) => link.id === "admin");
+        if (isAdmin && !alreadyHasAdmin) {
+          return [
+            ...prev,
+            { name: "Admin", id: "admin", path: "/Pages/Admin" },
+          ];
+        }
+        return prev;
+      });
+    }
+  }, []);
+  
+
+  
+ 
   const [menuOpen, setMenuOpen] = useState(false);
   const bellIconRef = useRef(null);
   const pathname = usePathname();

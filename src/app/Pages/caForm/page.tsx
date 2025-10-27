@@ -11,7 +11,8 @@ import Loading from "../../../components/loading";
 export default function Form() {
   const { user, loading } = useAuth();
   const router = useRouter();
-
+  
+  
   useEffect(() => {
     // Only redirect if we're not loading and user is not authenticated
     if (!loading && !user) {
