@@ -5,7 +5,7 @@ import { useAuth } from "@/app/context/AuthContext";
 
 const AdminPanel = () => {
   const { user, logout } = useAuth();
-  const [view, setView] = useState("applications"); // 'applications' or 'emails'
+  const [view, setView] = useState("emails"); // 'applications' or 'emails'
   const [applications, setApplications] = useState([]);
   const [emails, setEmails] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -67,8 +67,8 @@ const AdminPanel = () => {
   };
 
   useEffect(() => {
-    // Default: load applications
-    fetchApplications();
+    // Default: load emails
+    fetchEmails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -158,14 +158,14 @@ const AdminPanel = () => {
         <div className="bg-gray-800 rounded-xl p-4 shadow">
           <div className="flex justify-between items-center mb-4">
             <div className="flex gap-3">
-              <button
+              {/* <button
                 onClick={fetchApplications}
                 className={`px-4 py-2 rounded-md font-medium transition ${
                   view === "applications" ? "bg-purple-600" : "bg-gray-700"
                 }`}
               >
                 Applications
-              </button>
+              </button> */}
 
               <button
                 onClick={fetchEmails}
@@ -214,7 +214,8 @@ const AdminPanel = () => {
           {loading && <div className="text-gray-300">Loading...</div>}
           {error && <div className="text-red-400">{error}</div>}
 
-          {view === "applications" && !loading && (
+          {/* Applications section commented out - showing only emails */}
+          {/* {view === "applications" && !loading && (
             <div className="overflow-x-auto">
               <div className="mb-4 flex justify-between items-center">
                 <div className="text-sm text-gray-400">
@@ -290,7 +291,7 @@ const AdminPanel = () => {
                 </tbody>
               </table>
             </div>
-          )}
+          )} */}
 
           {view === "emails" && !loading && (
             <div>
