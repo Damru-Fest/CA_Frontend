@@ -14,7 +14,6 @@ export default function FormInfo({ onSubmit, submitting = false }) {
     stream: "",
     linkedinUrl: "",
     instagramUrl: "",
-    phoneNumber: "",
     previousExperience: "",
     whyAmbassador: "",
   });
@@ -39,7 +38,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
   // --- Required fields for each step ---
   const requiredFields = {
     0: ["college", "yearOfStudy", "stream"],
-    1: ["linkedinUrl", "instagramUrl", "phoneNumber"],
+    1: ["linkedinUrl", "instagramUrl"],
     2: ["previousExperience"],
     3: ["whyAmbassador"],
   };
@@ -52,7 +51,6 @@ export default function FormInfo({ onSubmit, submitting = false }) {
       if (!value) return false;
       if (field === "linkedinUrl") return isValidUrl(value, "linkedin");
       if (field === "instagramUrl") return isValidUrl(value, "instagram");
-      if (field === "phoneNumber") return isValidPhone(value);
       return true;
     });
   }, [step, data]);
@@ -64,7 +62,6 @@ export default function FormInfo({ onSubmit, submitting = false }) {
     stream: "Stream",
     linkedinUrl: "LinkedIn",
     instagramUrl: "Instagram",
-    phoneNumber: "Phone number",
     previousExperience: "Previous experience",
     whyAmbassador: "Why you want to be a ambassador",
   };
@@ -79,8 +76,6 @@ export default function FormInfo({ onSubmit, submitting = false }) {
       return "Enter a valid LinkedIn URL";
     if (fieldName === "instagramUrl" && !isValidUrl(value, "instagram"))
       return "Enter a valid Instagram URL";
-    if (fieldName === "phoneNumber" && !isValidPhone(value))
-      return "Enter a valid phone number (10 digits)";
 
     return null;
   };
@@ -101,8 +96,7 @@ export default function FormInfo({ onSubmit, submitting = false }) {
         (field) =>
           !safeTrim(data[field]) ||
           (field === "linkedinUrl" && !isValidUrl(data[field], "linkedin")) ||
-          (field === "instagramUrl" && !isValidUrl(data[field], "instagram")) ||
-          (field === "phoneNumber" && !isValidPhone(data[field]))
+          (field === "instagramUrl" && !isValidUrl(data[field], "instagram"))
       );
       if (firstInvalid) {
         const el = document.querySelector(`[name="${firstInvalid}"]`);
@@ -287,26 +281,6 @@ export default function FormInfo({ onSubmit, submitting = false }) {
               {getFieldError("instagramUrl") && (
                 <p className="text-red-400 text-sm">
                   {getFieldError("instagramUrl")}
-                </p>
-              )}
-            </div>
-
-            <label className="mb-2" htmlFor="phoneNumber">
-              Phone Number
-            </label>
-            <input
-              id="phoneNumber"
-              name="phoneNumber"
-              type="tel"
-              value={data.phoneNumber}
-              onChange={handleChange}
-              placeholder="Enter your phone number"
-              className="border-2 border-gray-500 p-3 rounded-2xl mb-3 bg-[#1E1E1E] text-white placeholder-gray-400 focus:border-amber-500 focus:outline-none"
-            />
-            <div className="h-6 mb-1">
-              {getFieldError("phoneNumber") && (
-                <p className="text-red-400 text-sm">
-                  {getFieldError("phoneNumber")}
                 </p>
               )}
             </div>
