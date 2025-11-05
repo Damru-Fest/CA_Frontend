@@ -13,8 +13,8 @@ export const AuthProvider = ({ children }) => {
   const getMe = async () => {
     try {
       const response = await axiosInstance.get("/auth/me");
-      if (response.data.data.user) {
-        setUser(response.data.data.user);
+      if (response?.data) {
+        setUser(response?.data);
       }
       return true;
     } catch (err) {
